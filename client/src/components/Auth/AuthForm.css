@@ -1,0 +1,84 @@
+/* client/src/components/Auth/AuthForm.css */
+.auth-form-container {
+  background-color: #1e1e1e; /* Dark card background */
+  padding: 30px;
+  border-radius: 12px; /* More rounded edges */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  max-width: 450px;
+  margin: 40px auto; /* Add some margin to the auth page */
+}
+
+.auth-form .form-group {
+  margin-bottom: 20px;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #e0e0e0; /* Light grey labels */
+  font-size: 0.9rem;
+}
+
+/* Using global input styles from App.css, but can override here if needed */
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffffff; /* White button */
+  color: #121212; /* Black text */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px; /* Add some space before the button */
+}
+
+.auth-button:hover {
+  background-color: #f0f0f0;
+}
+
+.error-message {
+  color: #cf6679; /* Material dark theme error color */
+  background-color: rgba(207, 102, 121, 0.1);
+  border: 1px solid #cf6679;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.or-divider {
+  text-align: center;
+  margin: 25px 0;
+  font-weight: 500;
+  color: #777;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.google-signin-button {
+  width: 100%;
+  padding: 10px 12px; /* Adjusted padding */
+  background-color: #2a2a2a; /* Darker button for Google, to differentiate */
+  color: #ffffff;
+  border: 1px solid #444; /* Subtle border */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.google-signin-button:hover {
+  background-color: #333333;
+  border-color: #555;
+}
+

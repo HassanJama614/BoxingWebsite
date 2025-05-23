@@ -1,0 +1,44 @@
+/* client/src/pages/ClassesPage.css */
+
+.classes-page {
+  /* The main page background color will likely come from App.css body or a wrapper
+     like .page-wrapper-contained. If you need to force it here: */
+  /* background-color: #1c1c1e; Or your preferred page background dark color */
+
+  /* Ensure text is visible if page background is dark */
+  color: #e0e0e0;
+  padding-top: 40px; /* Space for heading from top (below navbar) */
+  padding-bottom: 40px; /* Space at bottom */
+  text-align: center;
+  /* max-width and side centering are handled by .page-wrapper-contained from Layout.js */
+}
+
+.classes-page h2 {
+  font-size: 2.5rem; /* Or your previous size preference */
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #ffffff; /* White heading */
+}
+
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Styles for the individual cards for fall-down animation */
+.classes-grid .class-card-animation-wrapper {
+  opacity: 0;
+  transform: translateY(-40px); /* Start slightly above */
+  animation: fallDownCard 0.7s ease-out forwards;
+}
+
+/* Keyframes for the card animation */
+@keyframes fallDownCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

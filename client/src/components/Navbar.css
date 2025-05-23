@@ -1,0 +1,112 @@
+/* client/src/components/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e; /* Slightly lighter than body background */
+  color: #ffffff;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  height: 70px; /* Explicit height if you are using it for calculations */
+}
+
+.navbar-logo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 25px;
+}
+
+.navbar-links a,
+.navbar-links span,
+.navbar-links button { /* General styling for items that should look like links */
+  color: #e0e0e0; /* Light grey for links/text */
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  font-family: inherit; /* Ensure button inherits font */
+}
+
+.navbar-links a:hover,
+.navbar-links button.nav-link-item:hover span, /* Target span for hover color consistency */
+.navbar-links button.nav-link-item:hover .nav-icon /* Target icon for hover color consistency */
+ {
+  color: #ffffff; /* White on hover */
+}
+
+.navbar-links button.nav-link-item:hover .nav-icon { /* To make sure stroke icons change color on hover if `currentColor` is used */
+    stroke: #ffffff;
+}
+.navbar-links button.nav-link-item .nav-icon {
+    stroke: #e0e0e0; /* Initial color for icon strokes */
+    transition: stroke 0.3s ease;
+}
+
+
+.navbar-links span.user-welcome {
+  color: #ffffff; /* White for user name */
+  font-weight: 500;
+  margin-right: 10px; /* Add some space before logout if needed */
+}
+
+/* For Sign Up / Sign In buttons (when not logged in) */
+.nav-button {
+  background-color: #ffffff;
+  color: #121212 !important; /* Black text on white button, !important if other styles conflict */
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block; /* Ensure it behaves like a block for padding etc. */
+  text-decoration: none; /* Remove underline if it's a Link styled as button */
+}
+
+.nav-button:hover {
+  background-color: #f0f0f0; /* Slightly darker white on hover */
+  color: #121212 !important;
+}
+
+
+/* Styling for icon + text navigation items */
+.nav-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+}
+
+.nav-icon {
+  /* SVG styling - color is controlled by 'currentColor' or explicit stroke/fill */
+  /* For stroke-based icons, currentColor in SVG usually works. We are overriding directly for precision. */
+  vertical-align: middle; /* Helps with alignment sometimes */
+}
+
+/* Explicitly style the Logout button if it's using nav-link-item class */
+.navbar-links li button.nav-link-item {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    /* Text color already handled by general .navbar-links button rule */
+}

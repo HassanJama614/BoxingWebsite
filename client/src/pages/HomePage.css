@@ -1,0 +1,100 @@
+/* client/src/pages/HomePage.css */
+
+/* client/src/pages/HomePage.css */
+
+.homepage-container {
+    position: relative;
+    width: 100%; /* Will be 100% of .page-wrapper-full-width */
+    height: calc(100vh - 70px); /* Assumes 70px navbar height */
+    margin-top: 70px; /* Positions it directly below the fixed navbar */
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center; /* Horizontally center .homepage-content */
+    align-items: center;   /* Vertically center .homepage-content */
+    box-sizing: border-box;
+}
+
+/* ... THE REST OF HomePage.css (video, overlay, homepage-content, text styles, animations) REMAINS THE SAME AS THE PREVIOUS "FORCEFUL CENTERING" VERSION ... */
+/* Ensure .homepage-content has these:
+
+*/
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 28, 30, 0);
+    z-index: -1;
+}
+
+.homepage-content {
+    z-index: 1;
+    position: relative;
+    padding: 20px;
+    max-width: 90%;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.homepage-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: fallDown 1s ease-out forwards;
+    text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
+    /* No explicit width, will be centered by parent's align-items */
+}
+
+.homepage-content p {
+    font-size: 1.15rem;
+    color: #e0e0e0;
+    max-width: 650px; /* Max width for readability of the paragraph itself */
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fallDown 1s ease-out 0.3s forwards;
+    text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    /* Text inside p is centered by .homepage-content's text-align: center */
+}
+
+.homepage-content .button-container {
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: fallDown 1s ease-out 0.6s forwards;
+    /* Will be centered by .homepage-content's align-items */
+    display: flex; /* Optional: to arrange buttons side-by-side if needed */
+    gap: 15px; /* Optional: space between buttons if display:flex is used */
+}
+
+
+@keyframes fallDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.home-page-button:hover {
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3) !important;
+}

@@ -1,0 +1,106 @@
+/* client/src/assets/App.css */
+body {
+  margin: 0;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1c1c1e;
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+main { /* Target the main element used in Layout.js */
+  display: block; /* Good default for main */
+}
+
+.page-wrapper-full-width {
+  /* This wrapper will allow HomePage to be full width */
+  /* HomePage.css then handles its .homepage-container's margin-top */
+  width: 100%;
+}
+
+.page-wrapper-contained {
+  /* Styles for all other pages that need to be centered and padded */
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  /* paddingTop is handled by inline style in Layout.js to push content below Navbar */
+  box-sizing: border-box;
+}
+
+/* REMOVE OR COMMENT OUT THE OLD .container CLASS to avoid conflicts */
+/*
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: auto;
+  padding: 0 2rem;
+  padding-top: 80px;
+}
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #bb86fc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a16ef4;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  font-weight: bold;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.centered-content { /* This can still be used as a utility class if needed within a page */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #bb86fc;
+  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+}
