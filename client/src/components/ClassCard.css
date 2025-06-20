@@ -1,16 +1,17 @@
 /* client/src/components/ClassCard.css */
 .class-card {
-  background-color: #1e1e1e; /* Dark grey card background - provides contrast to pure black page */
-  /* Or use #2a2a2a for a slightly lighter card if page is #1c1c1e */
-  border: 1px solid #333333; /* Subtle border for definition */
+  /* This class uses .content-card from App.css for its background, padding, etc. */
+  /* Or, if you want specific styling different from general .content-card: */
+  background-color: #1e1e1e;
+  border: 1px solid #333333;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   text-align: left;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #e0e0e0; /* Default light text color for the card content */
+  color: #e0e0e0; /* Default text color for card */
 }
 
 .class-card:hover {
@@ -20,7 +21,7 @@
 
 .class-card-image {
   width: 100%;
-  height: 200px; /* Or your preferred image height */
+  height: 200px;
   object-fit: cover;
 }
 
@@ -33,58 +34,52 @@
 
 .class-card-content h3 {
   margin-top: 0;
-  margin-bottom: 10px; /* Space below heading */
-  color: #ffffff; /* White heading for the class name */
+  margin-bottom: 10px;
+  color: #ffffff;
   font-size: 1.4rem;
 }
 
 .class-card-content .class-description {
   font-size: 0.9rem;
-  color: #b0b0b0; /* Light grey for description text */
-  min-height: 60px; /* Adjust as needed */
+  color: #b0b0b0;
+  min-height: 60px;
   margin-bottom: 15px;
   flex-grow: 1;
-  line-height: 1.5; /* Improve readability of paragraph */
+  line-height: 1.5;
 }
 
-.class-card-content p { /* General paragraph styling within card content */
-    margin-bottom: 10px; /* Consistent spacing */
+.class-card-content p {
+    margin-bottom: 10px;
 }
 
-.class-card-content p strong { /* For "Instructor:" label */
-    color: #d0d0d0; /* Slightly brighter than paragraph text */
+.class-card-content p strong {
+    color: #d0d0d0;
     font-weight: 600;
 }
 
 .class-price {
   font-weight: bold;
-  color: #ffffff; /* White for price, as requested */
+  color: #ffffff; /* === PRICE TEXT IS WHITE === */
+  background-color: transparent; /* === NO BACKGROUND BOX FOR PRICE === */
   font-size: 1.2rem;
-  margin-bottom: 15px; /* More space before button */
+  margin-bottom: 15px;
+  padding: 0; /* No padding around price text */
 }
 
-.book-button {
+.book-button { /* This will use .primary-action-button style from App.css */
+  /* If you want to override specifically here: */
   display: block;
   width: 100%;
-  padding: 10px 15px;
-  background-color: #ffffff; /* White background */
-  color: #1c1c1e;         /* Dark text (matching page background) */
-  border: none; /* Or 1px solid #cccccc for slight definition */
-  border-radius: 8px;
+  padding: 10px 15px; /* Kept specific padding */
+  /* background-color: #ffffff; */ /* Inherits or uses .primary-action-button */
+  /* color: #121212; */        /* Inherits or uses .primary-action-button */
+  /* border: none; */
+  /* border-radius: 8px; */
   cursor: pointer;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
-  margin-top: auto; /* Push button to bottom if card content is short */
+  margin-top: auto;
 }
-
-.book-button:hover {
-  background-color: #f0f0f0;
-  color: #121212;
-}
-
-.book-button:active {
-    transform: translateY(1px);
-}
+/* If you added `className="primary-action-button"` to the button in ClassCard.js, it will pick up global styles */

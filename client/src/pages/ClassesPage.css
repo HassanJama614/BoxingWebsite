@@ -1,41 +1,49 @@
 /* client/src/pages/ClassesPage.css */
 
 .classes-page {
-  /* The main page background color will likely come from App.css body or a wrapper
-     like .page-wrapper-contained. If you need to force it here: */
-  /* background-color: #1c1c1e; Or your preferred page background dark color */
-
-  /* Ensure text is visible if page background is dark */
+  background-color: #000000; /* === PURE BLACK BACKGROUND === */
   color: #e0e0e0;
-  padding-top: 40px; /* Space for heading from top (below navbar) */
-  padding-bottom: 40px; /* Space at bottom */
-  text-align: center;
-  /* max-width and side centering are handled by .page-wrapper-contained from Layout.js */
+  width: 100%; /* Take full width from .page-wrapper-full-width */
+  min-height: calc(100vh - 70px); /* Full viewport height below navbar */
+  margin-top: 70px; /* To position below the fixed navbar */
+  padding-top: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  display: flex; /* Use flex to center the content block */
+  flex-direction: column;
+  align-items: center; /* Horizontally center direct children */
 }
 
 .classes-page h2 {
-  font-size: 2.5rem; /* Or your previous size preference */
+  font-size: 2.5rem;
   margin-bottom: 40px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #ffffff; /* White heading */
+  color: #ffffff;
+  text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.1);
+  /* Already centered due to parent's align-items */
 }
 
+/* This grid will now be centered within the full-width .classes-page */
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
+  /* Let's use a slightly different approach for card sizing and spacing for better responsiveness */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 25px; /* Gap between cards */
+  width: 100%; /* Grid takes full available width */
+  max-width: 1200px; /* Max width for the grid itself to prevent cards becoming too wide */
+  padding: 0 20px; /* Padding on the sides of the grid */
+  box-sizing: border-box;
+  /* margin-left: auto; and margin-right: auto; are not needed if .classes-page uses align-items: center */
 }
 
-/* Styles for the individual cards for fall-down animation */
 .classes-grid .class-card-animation-wrapper {
   opacity: 0;
-  transform: translateY(-40px); /* Start slightly above */
+  transform: translateY(-40px);
   animation: fallDownCard 0.7s ease-out forwards;
+  /* The cards themselves will take up the space provided by the grid column */
 }
 
-/* Keyframes for the card animation */
 @keyframes fallDownCard {
   to {
     opacity: 1;

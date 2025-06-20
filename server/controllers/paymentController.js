@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 const Payment = require('../models/Payment');
-const Class = require('./models/Class');
+const Class = require('../models/Class');
 
 async function getMpesaAuthToken() {
     const consumerKey = process.env.MPESA_CONSUMER_KEY;

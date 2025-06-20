@@ -1,0 +1,138 @@
+/* client/src/pages/ProfileSettingsPage.css */
+.profile-settings-container {
+    color: #e0e0e0;
+    padding-bottom: 40px;
+    /* Assumes .page-wrapper-contained from Layout/App.css handles max-width, centering, and base top padding */
+}
+
+.profile-settings-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    color: #ffffff; /* Ensuring heading is white */
+}
+
+.profile-form {
+    background-color: #1e1e1e; /* Dark card background */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* Max width for the form itself */
+    margin: 0 auto; /* Center the form within its container */
+}
+
+.profile-form .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 1rem; /* Increased font size */
+    color: #e0e0e0; /* Ensure label color */
+}
+
+/* Assuming global input styles are fine, otherwise target specifically: */
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form textarea {
+  font-size: 1rem; /* Increased font size */
+  padding: 12px 15px; /* Adjust padding for better look with larger font */
+  /* Inherits background, border from global input styles in App.css */
+}
+
+.profile-form textarea {
+    width: 100%; /* Already global but re-iterate if needed */
+    min-height: 100px; /* Slightly more space for bio */
+    font-family: inherit;
+    resize: vertical;
+    /* Inherits background, color, border, radius from global input styles in App.css */
+}
+/* Focus styles for textarea are handled by global input focus styles in App.css */
+
+
+.profile-picture-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.profile-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #333333; /* Darker border for preview */
+    background-color: #2a2a2a; /* Fallback bg if image is transparent or slow to load */
+    display: inline-block; /* Center with text-align of parent */
+}
+
+.upload-pic-button {
+    display: inline-block;
+    padding: 8px 15px;
+    /* Using a less prominent style than main action buttons */
+    background-color: #3a3a3e; /* Dark grey button */
+    color: #e0e0e0; /* Light text */
+    border: 1px solid #555555;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500; /* Normal weight for secondary action */
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+.upload-pic-button:hover {
+    background-color: #4a4a4e; /* Slightly lighter grey on hover */
+}
+
+
+.profile-picture-section small {
+    display: block;
+    font-size: 0.9rem; /* Increased font size */
+    color: #999999; /* Grey for hint text */
+    margin-top: 8px;
+}
+
+
+.save-profile-button {
+    width: 100%;
+    padding: 12px 15px; /* Consistent padding */
+    background-color: #ffffff; /* White primary action button */
+    color: #121212;     /* Dark text */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem; /* Consistent with other buttons if needed */
+    font-weight: bold;
+    text-transform: uppercase; /* If desired */
+}
+.save-profile-button:hover {
+    background-color: #f0f0f0;
+}
+.save-profile-button:disabled {
+    background-color: #555555;
+    color: #aaaaaa;
+    cursor: not-allowed;
+}
+
+/* Success and Error messages */
+.success-message {
+    color: #a0e0a0; /* Lighter green */
+    background-color: rgba(76, 175, 80, 0.15); /* Slightly more visible bg */
+    border: 1px solid #4CAF50;
+    padding: 12px; /* More padding */
+    border-radius: 6px; /* Consistent radius */
+    margin-bottom: 20px; /* More space */
+    text-align: center;
+    font-size: 0.95rem;
+}
+.error-message {
+    color: #ffaaaa; /* Lighter red */
+    background-color: rgba(207, 102, 121, 0.15); /* Slightly more visible bg */
+    border: 1px solid #cf6679;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}

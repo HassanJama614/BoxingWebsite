@@ -1,0 +1,119 @@
+/* client/src/pages/InstructorApplicationPage.css */
+.instructor-app-container {
+    color: #e0e0e0;
+    padding-bottom: 40px;
+}
+
+.instructor-app-container h2 {
+    text-align: center;
+    margin-bottom: 15px; /* Less margin if subtitle is present */
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+ .page-subtitle {
+     text-align: center;
+     color: #b0b0b0;
+     margin-bottom: 30px;
+     font-size: 1.1rem;
+     max-width: 600px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+.instructor-app-form {
+    background-color: #1e1e1e;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    max-width: 700px; /* Can be a bit wider for more text fields */
+    margin: 0 auto;
+}
+
+.instructor-app-form .form-group {
+    margin-bottom: 20px;
+}
+
+.instructor-app-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.instructor-app-form input[type="text"],
+.instructor-app-form input[type="email"],
+.instructor-app-form input[type="tel"],
+.instructor-app-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #2a2a2a; /* Slightly different from page for inputs */
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.instructor-app-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.instructor-app-form input:focus,
+.instructor-app-form textarea:focus {
+  outline: none;
+  border-color: #666666; /* Your theme's focus color */
+  box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.2);
+}
+
+ .instructor-app-form small {
+     display: block;
+     font-size: 0.85rem;
+     color: #888;
+     margin-top: 5px;
+ }
+
+.submit-app-button {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #ffffff; /* White button */
+    color: #121212; /* Dark text */
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.submit-app-button:hover {
+    background-color: #f0f0f0;
+}
+ .submit-app-button:disabled {
+     background-color: #555;
+     color: #aaa;
+     cursor: not-allowed;
+ }
+
+/* Re-use success/error message styles from ProfileSettingsPage.css or AuthForm.css */
+.success-message {
+    color: #a0e0a0;
+    background-color: rgba(76, 175, 80, 0.15);
+    border: 1px solid #4CAF50;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+.error-message {
+    color: #ffaaaa;
+    background-color: rgba(207, 102, 121, 0.15);
+    border: 1px solid #cf6679;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}

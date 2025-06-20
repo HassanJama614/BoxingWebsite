@@ -1,11 +1,11 @@
 /* client/src/components/Navbar.css */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1e1e1e; /* Slightly lighter than body background */
+  display: flex; /* This is key for horizontal layout of logo and links-container */
+  justify-content: space-between; /* Pushes logo to left, links to right */
+  align-items: center; /* Vertically aligns items in the navbar */
+  background-color: #1e1e1e;
   color: #ffffff;
-  padding: 1rem 2rem;
+  padding: 0 2rem; /* Remove vertical padding if height is fixed */
   position: fixed;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  height: 70px; /* Explicit height if you are using it for calculations */
+  height: 70px; /* Explicit height is good for layout consistency */
 }
 
 .navbar-logo a {
@@ -24,89 +24,115 @@
   letter-spacing: 1px;
 }
 
+/* This UL is the flex container for the nav items */
 .navbar-links {
   list-style: none;
-  display: flex;
-  align-items: center;
+  display: flex; /* === THIS IS CRUCIAL for horizontal items === */
+  align-items: center; /* Vertically aligns items within this UL */
   margin: 0;
   padding: 0;
+  height: 100%; /* Make UL take full height of navbar for better alignment */
 }
 
+/* Each LI is a flex item */
 .navbar-links li {
-  margin-left: 25px;
+  margin-left: 20px; /* Spacing between items */
+  display: flex; /* Helps align content within LI if complex (like icon + text) */
+  align-items: center; /* Vertically align content within each LI */
+}
+.navbar-links li:first-child {
+  margin-left: 0; /* No left margin for the very first item in the links list */
 }
 
-.navbar-links a,
-.navbar-links span,
-.navbar-links button { /* General styling for items that should look like links */
-  color: #e0e0e0; /* Light grey for links/text */
+/* General styling for link-like items (<a> tags and buttons styled as links) */
+.nav-link-item {
+  display: flex; /* For aligning icon and text within the link/button */
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  color: #e0e0e0;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
-  font-family: inherit; /* Ensure button inherits font */
+  font-family: inherit;
+  padding: 5px 0; /* Add some vertical padding if needed for click area */
+  white-space: nowrap; /* Prevent text from wrapping which can mess up layout */
+}
+.nav-link-item:hover,
+.nav-link-item:focus {
+  color: #ffffff;
+}
+.nav-link-item:hover .nav-icon,
+.nav-link-item:focus .nav-icon {
+  stroke: #ffffff; /* Change icon stroke on hover/focus */
 }
 
-.navbar-links a:hover,
-.navbar-links button.nav-link-item:hover span, /* Target span for hover color consistency */
-.navbar-links button.nav-link-item:hover .nav-icon /* Target icon for hover color consistency */
- {
-  color: #ffffff; /* White on hover */
+.nav-icon {
+  stroke: #e0e0e0; /* Default icon stroke */
+  transition: stroke 0.3s ease;
+  vertical-align: middle; /* Better alignment for SVGs */
+  flex-shrink: 0; /* Prevent icon from shrinking if space is tight */
 }
 
-.navbar-links button.nav-link-item:hover .nav-icon { /* To make sure stroke icons change color on hover if `currentColor` is used */
-    stroke: #ffffff;
-}
-.navbar-links button.nav-link-item .nav-icon {
-    stroke: #e0e0e0; /* Initial color for icon strokes */
-    transition: stroke 0.3s ease;
-}
-
-
-.navbar-links span.user-welcome {
-  color: #ffffff; /* White for user name */
+/* User welcome text */
+.user-welcome {
+  color: #ffffff;
   font-weight: 500;
-  margin-right: 10px; /* Add some space before logout if needed */
+  white-space: nowrap; /* Prevent welcome message from wrapping */
 }
 
-/* For Sign Up / Sign In buttons (when not logged in) */
+/* "Sign Up" / "Sign In" buttons (when logged out) */
 .nav-button {
   background-color: #ffffff;
-  color: #121212 !important; /* Black text on white button, !important if other styles conflict */
+  color: #121212 !important;
   border: none;
-  padding: 8px 15px;
+  padding: 8px 15px; /* Keep padding */
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  display: inline-block; /* Ensure it behaves like a block for padding etc. */
-  text-decoration: none; /* Remove underline if it's a Link styled as button */
+  text-decoration: none;
+  display: flex; /* For alignment if icon ever added */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
-
 .nav-button:hover {
-  background-color: #f0f0f0; /* Slightly darker white on hover */
+  background-color: #f0f0f0;
   color: #121212 !important;
 }
 
+/* Logout button when styled as a link */
+.logout-button.nav-link-item {
+  background: none;
+  border: none;
+  padding: 0; /* Remove button padding */
+  cursor: pointer;
+  /* Color, font-size, gap will be inherited from .nav-link-item */
+}
 
-/* Styling for icon + text navigation items */
-.nav-link-item {
-  display: flex;
+/* Profile Picture Icon Specifics */
+.profile-icon-item {
+  /* margin-left can be adjusted here if it needs different spacing than other LIs */
+}
+
+.profile-icon-link {
+  display: flex; /* Not strictly needed if just an img, but good for consistency */
   align-items: center;
-  gap: 8px; /* Space between icon and text */
+  border-radius: 50%; /* Prevents weird hover states if link is larger than image */
 }
 
-.nav-icon {
-  /* SVG styling - color is controlled by 'currentColor' or explicit stroke/fill */
-  /* For stroke-based icons, currentColor in SVG usually works. We are overriding directly for precision. */
-  vertical-align: middle; /* Helps with alignment sometimes */
+.navbar-profile-pic {
+  width: 38px;   /* Slightly larger to be more prominent */
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #555555; /* Slightly more visible default border */
+  transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  display: block; /* Remove potential space below inline images */
+  background-color: #333; /* Fallback color if image fails to load */
 }
-
-/* Explicitly style the Logout button if it's using nav-link-item class */
-.navbar-links li button.nav-link-item {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    /* Text color already handled by general .navbar-links button rule */
+.navbar-profile-pic:hover {
+  transform: scale(1.1);
+  border-color: #ffffff;
 }

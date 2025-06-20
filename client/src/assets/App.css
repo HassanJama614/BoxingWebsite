@@ -6,101 +6,152 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1c1c1e;
-  color: #e0e0e0;
+  background-color: #000000; /* === PURE BLACK FOR ENTIRE SITE BODY === */
+  color: #e0e0e0; /* Default light text for contrast */
   line-height: 1.6;
   font-weight: 400;
 }
 
-main { /* Target the main element used in Layout.js */
-  display: block; /* Good default for main */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { /* Used by Layout.js to wrap page content */
+    flex-grow: 1;
+    /* Background will be black from body. No specific styles needed here unless for padding/margin */
 }
 
 .page-wrapper-full-width {
-  /* This wrapper will allow HomePage to be full width */
-  /* HomePage.css then handles its .homepage-container's margin-top */
   width: 100%;
+  /* This wrapper allows child pages (like HomePage, ClassesPage if set) to manage their own top margin */
+  /* background-color is inherited from body */
 }
 
 .page-wrapper-contained {
-  /* Styles for all other pages that need to be centered and padded */
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 2rem;
   padding-right: 2rem;
-  /* paddingTop is handled by inline style in Layout.js to push content below Navbar */
+  padding-top: 70px; /* Default space below navbar for contained pages */
   box-sizing: border-box;
+  /* background-color is inherited from body */
 }
-
-/* REMOVE OR COMMENT OUT THE OLD .container CLASS to avoid conflicts */
-/*
-.container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: auto;
-  padding: 0 2rem;
-  padding-top: 80px;
-}
-*/
 
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
-  margin-bottom: 0.75rem;
+  color: #ffffff; /* White headings */
+  margin-top: 0; /* Common reset */
+  margin-bottom: 1rem; /* Default spacing */
   font-weight: 700;
 }
 
 p {
   margin-bottom: 1rem;
+  color: #b0b0b0; /* Slightly softer than default #e0e0e0 for paragraphs */
 }
 
 a {
-  color: #bb86fc;
+  color: #e0e0e0; /* Light grey for links, to be less prominent than white */
   text-decoration: none;
+  transition: color 0.2s ease;
 }
-
 a:hover {
-  color: #a16ef4;
+  color: #ffffff; /* White on hover */
 }
 
 button {
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s ease, transform 0.1s ease, color 0.3s ease, border-color 0.3s ease;
   font-weight: bold;
+  font-family: inherit;
+  padding: 10px 15px; /* Default button padding */
+  border: 1px solid transparent; /* Start with transparent border */
 }
-
 button:active {
     transform: translateY(1px);
 }
 
-.centered-content { /* This can still be used as a utility class if needed within a page */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+/* Global primary button style (white button, dark text) */
+.primary-action-button {
+    background-color: #ffffff;
+    color: #121212; /* Dark text, matching very dark backgrounds */
+    border-color: #ffffff;
 }
+.primary-action-button:hover {
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+}
+
+/* Global secondary button style (dark button, white text) */
+.secondary-action-button {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+.secondary-action-button:hover {
+    background-color: #3a3a3a;
+    border-color: #555555;
+}
+
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="number"] {
-  background-color: #1e1e1e;
+input[type="tel"],
+input[type="number"],
+textarea {
+  background-color: #1e1e1e; /* Dark input background */
   color: #e0e0e0;
   border: 1px solid #333;
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 12px 15px; /* Good padding for inputs */
   box-sizing: border-box;
   width: 100%;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
-input[type="number"]:focus {
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus {
   outline: none;
-  border-color: #bb86fc;
-  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+  border-color: #666666; /* Light grey focus border */
+  box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.2); /* Light grey focus shadow */
+}
+
+/* Basic card style (can be used for forms, content blocks etc.) */
+.content-card {
+    background-color: #1e1e1e; /* Example: dark grey, distinct from #000000 body */
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03); /* Very subtle light shadow on black */
+    margin-bottom: 30px;
+}
+
+/* Message Styles */
+.success-message {
+    color: #a0e0a0;
+    background-color: rgba(76, 175, 80, 0.15);
+    border: 1px solid #4CAF50;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+.error-message {
+    color: #ffaaaa;
+    background-color: rgba(207, 102, 121, 0.15);
+    border: 1px solid #cf6679;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95rem;
 }

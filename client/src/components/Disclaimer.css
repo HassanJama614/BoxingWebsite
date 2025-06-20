@@ -1,0 +1,102 @@
+/* client/src/components/Disclaimer.css */
+.disclaimer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000; /* Pure black background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Softer font for disclaimer */
+    /* Initial state for page fade-in (can be removed if only text fades) */
+    /* opacity: 0;
+    animation: fadeInPage 0.5s ease-out forwards; */
+}
+
+.disclaimer-content {
+    max-width: 600px;
+}
+
+.disclaimer-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 300; /* Lighter font weight for a softer heading */
+    /* Animation for heading */
+    opacity: 0;
+    animation: fadeInElement 0.8s ease-out forwards;
+    animation-delay: 0.2s; /* Start after a brief moment */
+}
+
+.disclaimer-content p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Slightly off-white for paragraph */
+    font-weight: 400; /* Regular weight for paragraph readability */
+    /* Animation for paragraphs */
+    opacity: 0;
+    animation: fadeInElement 0.8s ease-out forwards;
+}
+
+/* Stagger paragraph animations */
+.disclaimer-content p:nth-of-type(1) { /* First paragraph */
+    animation-delay: 0.5s; /* Delay after heading */
+}
+
+.disclaimer-content p:nth-of-type(2) { /* Second paragraph */
+    animation-delay: 0.8s; /* Delay after first paragraph */
+}
+
+.disclaimer-accept-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 14px 35px; /* Slightly larger button */
+    font-size: 1rem;
+    font-weight: 600; /* Medium bold for button text */
+    font-family: 'Montserrat', sans-serif; /* Use main site font for button for consistency, or keep Nunito Sans */
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 35px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Animation for button */
+    opacity: 0;
+    animation: fadeInElement 0.8s ease-out forwards;
+    animation-delay: 1.1s; /* Delay after paragraphs */
+}
+
+.disclaimer-accept-button:hover {
+    background-color: #e0e0e0;
+    color: #000000;
+}
+
+/* Optional: Keyframes for overall page fade-in (if used on .disclaimer-overlay) */
+/* @keyframes fadeInPage {
+    to {
+        opacity: 1;
+    }
+} */
+
+/* Keyframes for the text/element fade-in animation */
+@keyframes fadeInElement {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Optional: slight upward movement during fade */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

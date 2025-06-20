@@ -1,14 +1,14 @@
 // client/src/components/ClassCard.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import './ClassCard.css';
 
 const ClassCard = ({ classItem }) => {
     const { _id, name, description, price, imageUrl, instructor } = classItem;
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
 
     const handleBookNow = () => {
-        // Navigate to a checkout page, passing class ID as a URL parameter
+       
         navigate(`/checkout/${_id}`);
     };
 
@@ -21,8 +21,8 @@ const ClassCard = ({ classItem }) => {
                 <h3>{name}</h3>
                 <p className="class-description">{description.substring(0,100)}...</p>
                 <p><strong>Instructor:</strong> {instructor}</p>
-                <p className="class-price">Price: KES {price}</p> {/* Assuming KES */}
-                {/* Update button onClick handler */}
+                <p className="class-price">Price: KES {price}</p> {}
+                {}
                 <button className="book-button" onClick={handleBookNow}>Book Now</button>
             </div>
         </div>

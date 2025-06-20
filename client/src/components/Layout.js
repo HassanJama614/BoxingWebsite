@@ -1,15 +1,23 @@
-// client/src/components/Layout.js (New File)
+// client/src/components/Layout.js
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Layout = ({ children }) => {
     const location = useLocation();
-    const isHomePage = location.pathname === '/';
+    // Add other paths that should be full-width
+    const fullWidthPaths = ['/', '/classes', '/checkout']; // Add more as needed, ensure classId is handled if /checkout/:classId
+    const isFullWidthPage = fullWidthPaths.some(path => {
+        if (path.includes(':')) { // Basic check for paths with params like /checkout/:classId
+            const basePath = path.substring(0, path.indexOf('/:'));
+            return location.pathname.startsWith(basePath);
+        }
+        return location.pathname === path;
+    });
 
-    // Determine the wrapper class based on the route
-    const wrapperClassName = isHomePage ? "page-wrapper-full-width" : "container page-wrapper-contained";
-    const wrapperStyle = isHomePage ? { paddingTop: '0px' } : { paddingTop: '70px' }; // HomePage manages its own top margin
+
+    const wrapperClassName = isFullWidthPage ? "page-wrapper-full-width" : "page-wrapper-contained";
+    const wrapperStyle = isFullWidthPage ? {} : { paddingTop: '70px' }; // Full width pages handle their own top margin/padding
 
     return (
         <>

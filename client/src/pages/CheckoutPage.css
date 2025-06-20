@@ -1,130 +1,83 @@
 /* client/src/pages/CheckoutPage.css */
+.checkout-container {
+  /* background-color: #000000; <<< REMOVE if body is black and parent wrapper is transparent */
+  color: #e0e0e0;
+  padding-bottom: 50px;
+  /* If using .page-wrapper-full-width for this page in Layout.js: */
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  margin-top: 70px;
+  padding-top: 40px; /* Adjust as needed */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form content block */
+}
 
+/* Form content wrapper for max-width and card styling */
+.checkout-content-wrapper {
+    /* Can use .content-card style from App.css or define here */
+    background-color: #1e1e1e;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
+    width: 100%;
+    max-width: 600px; /* Max width of the checkout form block */
+}
+
+
+.checkout-container h2 { /* Renamed from .checkout-content-wrapper h2 if that wrapper is gone */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    color: #ffffff;
+}
+
+.class-summary {
+    background-color: transparent; /* Or a very dark #101010 if inside checkout-content-wrapper card */
+    /* border: 1px solid #222; /* Optional if transparent */
+    padding: 0; /* No extra padding for summary if it's simple text */
+    margin-bottom: 30px;
+    /* box-shadow: none; */
+}
+
+.class-summary h3 {
+    margin-top: 0;
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.class-summary p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #b0b0b0;
+}
 
 .class-summary .price {
     font-size: 1.3rem;
     font-weight: bold;
-    color: #bb86fc; /* Accent color */
+    color: #ffffff; /* === PRICE TEXT IS WHITE === */
+    background-color: transparent; /* === NO BACKGROUND BOX FOR PRICE === */
+    padding: 0; /* No padding */
     margin-top: 15px;
 }
 
-.user-info {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 0.95rem;
-}
+/* ... (user-info, payment-section, form-group, input, mpesa-button, messages styles) ... */
+/* Ensure .payment-section uses a card-like background if desired (e.g., #1e1e1e or .content-card class) */
+/* Ensure .mpesa-button uses .primary-action-button style or has its white background defined */
 
 .payment-section {
-    background-color: #1e1e1e;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background-color: transparent; /* Or a very dark #101010 */
+    padding: 0; /* Adjust if it's not a distinct card anymore */
+    margin-top: 30px;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); */
 }
 
-.payment-section h3 {
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-    color: #fff;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #e0e0e0;
-    font-size: 0.9rem;
-}
-
-.form-group input[type="tel"] {
-    width: 100%;
-    padding: 10px 15px;
-    background-color: #2a2a2a;
-    color: #e0e0e0;
-    border: 1px solid #444;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-.form-group input[type="tel"]:focus {
-     outline: none;
-     border-color: #bb86fc;
-     box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
-}
-
-
-/* client/src/pages/CheckoutPage.css */
-/* ... (ALL your existing styles for .checkout-container, .class-summary, etc. remainUNCHANGED) ... */
-
-.mpesa-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #ffffff; /* === White background === */
-    color: #1c1c1e;         /* === Dark text (your body background) === */
-    border: 1px solid #cccccc; /* Optional: subtle border if needed */
-    border-radius: 8px; /* Matches your global button style */
-    font-size: 1.1rem;
-    font-weight: bold; /* Matches your global button style */
-    cursor: pointer;
-    text-transform: uppercase; /* Optional */
-    letter-spacing: 0.5px; /* Optional */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Matches global button */
-}
-
-.mpesa-button:hover {
-    background-color: #f0f0f0; /* Slightly off-white on hover */
-    color: #121212;
-}
-
-.mpesa-button:disabled {
-     background-color: #555555; /* Dark grey for disabled */
-     color: #aaaaaa;           /* Light grey text for disabled */
-     border-color: #555555;    /* Match background */
-     cursor: not-allowed;
-}
-
-/* ... (ALL your existing styles for .payment-status-message, .error-message etc. remain UNCHANGED) ... */
-
-.payment-status-message {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 500;
-}
-
-.payment-status-message.success {
-    background-color: rgba(0, 128, 0, 0.2); /* Greenish background for success */
-    color: #4CAF50; /* Green text */
-    border: 1px solid #4CAF50;
-}
-
-.payment-status-message.failed {
-    background-color: rgba(207, 102, 121, 0.1); /* Reddish background */
-    color: #cf6679; /* Red text */
-    border: 1px solid #cf6679;
-}
-.payment-status-message.processing,
-.payment-status-message.pending, /* For generic pending message */
- .payment-status-message /* Default for other messages like STK push initiated */
- {
-    background-color: rgba(251, 188, 5, 0.1); /* Yellowish */
-    color: #FBBC05; /* Yellow text */
-    border: 1px solid #FBBC05;
-}
-
-
-.error-message { /* General error like in AuthForm.css */
-    color: #cf6679;
-    background-color: rgba(207, 102, 121, 0.1);
-    border: 1px solid #cf6679;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    text-align: center;
+.mpesa-button { /* This should now use .primary-action-button from App.css */
+    /* width: 100%; */
+    /* padding: 12px; */
+    /* background-color: #ffffff; */ /* From global */
+    /* color: #121212; */         /* From global */
+    /* ... */
 }
