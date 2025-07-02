@@ -1,86 +1,61 @@
-// server/server.js
-const express = require('express'); // IMPORT EXPRESS FIRST
+const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const passport = require('passport');
 const connectDB = require('./config/db');
 
-// Route Files (can come after core requires)
 const authRoutes = require('./routes/authRoutes');
 const classRoutes = require('./routes/classRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const instructorApplicationRoutes = require('./routes/instructorApplicationRoutes');
 
-// Initialize passport configuration
 require('./config/passport-setup');
 
-dotenv.config(); // Load environment variables
-connectDB();     // Connect to MongoDB
+dotenv.config();
+connectDB();
 
-const app = express(); // NOW YOU CAN INITIALIZE THE APP
+const app = express();
 
-// --- CORS Middleware Configuration ---
-// ... (rest of your server.js code)
-
-// --- CORS Middleware Configuration ---
-// OPTION A: Simplest possible for debugging - allow ALL origins temporarily
-// console.log("Applying very permissive CORS for debugging...");
-// app.use(cors({ credentials: true })); // This allows all origins if no origin option is specified
-
-// OPTION B: Specific Origins (Your previous setup, let's ensure it's robust)
-const allowedOrigins = [
-    'http://localhost:3000', // Main Boxingly User App
-    'http://localhost:3001'  // Staff Dashboard App
-];
-
+// CORS Middleware
 app.use(cors({
-    origin: function (requestOrigin, callback) {
-        console.log("CORS Check: Request Origin ->", requestOrigin); // LOG THE INCOMING ORIGIN
-        if (!requestOrigin || allowedOrigins.indexOf(requestOrigin) !== -1) {
-            console.log("CORS Check: Origin ALLOWED.");
-            callback(null, true);
-        } else {
-            console.error('CORS Check: Origin DENIED ->', requestOrigin);
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    // Be more specific for production if you know your frontend domains
+    origin: [
+        'http://localhost:3000', // Main site local dev
+        'http://localhost:3001', // Staff dashboard local dev
+        'https://your-main-site.vercel.app', // Your DEPLOYED main site URL
+        'https://your-staff-dashboard.vercel.app' // Your DEPLOYED staff dashboard URL
+    ],
     credentials: true
 }));
 
-// --- Body Parser Middleware ---
-// To parse JSON request bodies
+// Body Parser & Passport Middleware
 app.use(express.json());
-// To parse URL-encoded request bodies (e.g., from HTML forms, though less common for APIs)
 app.use(express.urlencoded({ extended: false }));
-
-// --- Passport Middleware (for authentication strategies like Google OAuth) ---
 app.use(passport.initialize());
-// If you were using session-based authentication with Passport (not just JWTs from Google strategy),
-// you would also include: app.use(passport.session());
 
-// --- Mount API Routers ---
+// Mount Routers
 app.use('/api/auth', authRoutes);
 app.use('/api/classes', classRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/instructor-applications', instructorApplicationRoutes);
 
-// --- Simple Base Route for API (Optional: good for health checks) ---
+// Simple root endpoint to confirm API is running
 app.get('/', (req, res) => {
-    res.send('Boxingly API is up and running!');
+    res.send('Boxing API is alive!');
 });
 
-// --- Error Handling Middleware (Optional but Recommended) ---
-// Example: A simple catch-all for unhandled errors
-app.use((err, req, res, next) => {
-    console.error("Unhandled Error:", err.stack);
-    res.status(500).send('Something broke on the server!');
-});
+// ==========================================================
+// === REMOVE OR COMMENT OUT THE app.listen() BLOCK BELOW ===
+// ==========================================================
 
 
-// --- Define Port and Start Listening ---
 const PORT = process.env.PORT || 5001;
-
 app.listen(PORT, () => {
     console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-    // The "MongoDB Connected..." message comes from your connectDB function in db.js
 });
+
+
+// ====================================================
+// === ADD THIS LINE TO EXPORT THE APP FOR VERCEL ===
+// ====================================================
+module.exports = app;
