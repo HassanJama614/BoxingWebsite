@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5001/api',
-    baseURL: 'https://boxingly-api.onrender.com/api', // Default base URL
+    // baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5001/api',
+    baseURL: 'https://boxingly-api.onrender.com', // Default base URL
 });
 
 // Interceptor to add token to requests if available
