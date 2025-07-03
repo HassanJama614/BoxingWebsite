@@ -122,7 +122,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="profile-icon-item">
-              <a href="http://localhost:3001">
+              <a href="https://dashboard-alpha-weld-61.vercel.app/">
                 <button>Staff Dashboard</button>
               </a>
             </li>
